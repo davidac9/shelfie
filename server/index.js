@@ -18,6 +18,7 @@ massive(CONNECTION_STRING)
 
 app.get('/api/inventory', ctrl.getInv)
 app.post('/api/product', ctrl.newProduct)
+// Try and make this delete endpoint work I dare you
 app.delete(`/api/product/:id`, ctrl.deleteProduct)
 
 app.listen(SERVER_PORT, () => console.log(`Live from a concert of ${SERVER_PORT} banjo playing squirrels`))
