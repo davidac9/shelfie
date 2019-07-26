@@ -1,16 +1,17 @@
 import React, {Component} from 'react'
+import axios from 'axios';
 
 export default class Form extends Component {
     constructor() {
         super()
         this.state= {
-            img: "",
             name: "",
-            price: "",
+            price: 0,
+            image_url: "",
         }
     }
     handleChangeImg(e) {
-        this.setState({ img: e.target.value,
+        this.setState({ image_url: e.target.value,
         placeHolder: false })
     }
     handleChangeName(e) {
@@ -21,34 +22,41 @@ export default class Form extends Component {
     }
     cancel() {
         this.setState({
-            img: "",
             name: "",
             price: "",
+            image_url: "",
         })
     }
+
+    createProduct() {
+        const body = {
+            name: this.state.name,
+            price: this.state.price,
+            image_url: this.state.image_url
+        }
+        axios.post('/api/product', body).then(res => {
+            console.log(res)
+        }).catch(err => console.log(err, "couldn't create product oops"))
+        this.cancel()
+        this.props.getInventory()
+    }
+
     render() {
-        let { placeholder } = this.state
         return(
             <div className='Form'>
-                <div className="form-image">{placeholder ? (
-                    <div>
-                        <img className="placeholder" src={this.state.img}/>
-                    </div>
-        )
-        : (
-            <img className="placeholder" src="http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png"/>
-        )
-            }
-            </div>
+                <div className="form-image">
+                    <img className="placeholder" src={this.state.image_url} alt="" />
+
+                </div>
                 Image URL
-                <input type='paste' onChange={e => this.handleChangeImg(e)} value={this.state.img}/>
+                <input type='paste' onChange={e => this.handleChangeImg(e)} value={this.state.image_url}/>
                 Product Name
                 <input type='text' onChange={e => this.handleChangeName(e)} value={this.state.name} />
                 Price
                 <input type='text' onChange={e => this.handleChangePrice(e)} value={this.state.price} />
                 <div className="buttons">
                     <button onClick={() => this.cancel()}>Cancel</button>
-                    <button>Add to Inventory</button>
+                    <button onClick={() => this.createProduct()}>Add to Inventory</button>
                 </div>
             </div>
         )

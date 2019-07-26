@@ -16,4 +16,8 @@ massive(CONNECTION_STRING)
     console.log(err)
 })
 
+app.get('/api/inventory', ctrl.getInv)
+app.post('/api/product', ctrl.newProduct)
+app.delete(`/api/product/:id`, ctrl.deleteProduct)
+
 app.listen(SERVER_PORT, () => console.log(`Live from a concert of ${SERVER_PORT} banjo playing squirrels`))

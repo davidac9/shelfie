@@ -4,7 +4,7 @@ export default class Product extends Component {
     render() {
         return(
             <div className="Product">
-                <img src={this.props.data.img}/>
+                <img className="product-image" src={this.props.data.image_url} alt=""/>
                 <div className="product-info">
                     <p>
                         {this.props.data.name}
@@ -12,6 +12,8 @@ export default class Product extends Component {
                     <p>
                         ${this.props.data.price}
                     </p>
+                    <button>Delete</button>
+                    <button>Edit</button>
                 </div>
             </div>
         )

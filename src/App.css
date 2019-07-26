@@ -11,9 +11,11 @@
 img {
   max-width: 200px;
   max-height: 200px;
+  background-image: url('http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png');
 }
 
 .Form {
+  margin-top: 15px;
   background-color: coral;
   width: 400px;
   height: 430px;
@@ -23,16 +25,20 @@ img {
   justify-content: center;
   align-content: center;
   border-radius: 10px;
+  position: sticky;
+  top: 55px;
 }
 .placeholder {
   max-width: 250px;
   max-height: 250px;
+  height:250px;
+  width:250px;
+  background-image: url('http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png');
 }
 
 .form-image {
   display:flex;
   justify-content: center;
-
 }
 
 .content {
@@ -42,6 +48,7 @@ img {
 
 button {
   width: 80px;
+  border-radius: 10px;
 }
 
 .buttons {
@@ -49,4 +56,19 @@ button {
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between
+}
+
+.Header {
+  color: white;
+  height: 40px;
+  background-color: rgba(153, 29, 29, 0.979);
+  position: sticky;
+  top: 0;
+}
+
+.product-image {
+  background-image: url('http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png');
+  height: 200px;
+  width: 200px;
+  margin-right: 10px;
 }
